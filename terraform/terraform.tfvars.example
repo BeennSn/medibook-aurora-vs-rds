@@ -1,0 +1,5 @@
+aws_region = "us-east-2"
+# Con 2 instancias Aurora, y Multi-AZ RDS, se generan cargos reales.
+aurora_instance_class = "db.t4g.medium"
+rds_instance_class    = "db.t4g.micro"
+ec2_instance_type     = "t3.micro"
