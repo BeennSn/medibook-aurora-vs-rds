@@ -1,3 +1,4 @@
+-- Esquema utilizado en las pruebas reales del laboratorio MediBook.
 CREATE DATABASE IF NOT EXISTS medibook;
 USE medibook;
 
