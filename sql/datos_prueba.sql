@@ -1,5 +1,11 @@
 USE medibook;
-INSERT INTO pacientes(nombre,email) VALUES
-('Paciente Uno','paciente1@example.test'),('Paciente Dos','paciente2@example.test');
-INSERT INTO medicos(nombre,especialidad) VALUES
-('Medico Uno','Medicina general');
+
+INSERT IGNORE INTO pacientes VALUES
+(1,'Ana Torres','ana@ejemplo.com'),
+(2,'Luis Perez','luis@ejemplo.com');
+
+INSERT IGNORE INTO medicos VALUES
+(1,'Carlos Ramirez','Medicina General');
+
+SELECT 'TABLAS CREADAS' AS resultado;
+SHOW TABLES;

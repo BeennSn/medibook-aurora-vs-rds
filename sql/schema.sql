@@ -1,22 +1,26 @@
 CREATE DATABASE IF NOT EXISTS medibook;
 USE medibook;
+
 CREATE TABLE IF NOT EXISTS pacientes (
- id BIGINT PRIMARY KEY AUTO_INCREMENT,
- nombre VARCHAR(100) NOT NULL,
- email VARCHAR(150) NOT NULL UNIQUE
-) ENGINE=InnoDB;
+  id INT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  correo VARCHAR(100) NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS medicos (
- id BIGINT PRIMARY KEY AUTO_INCREMENT,
- nombre VARCHAR(100) NOT NULL,
- especialidad VARCHAR(100) NOT NULL
-) ENGINE=InnoDB;
+  id INT PRIMARY KEY,
+  nombre VARCHAR(100) NOT NULL,
+  especialidad VARCHAR(100) NOT NULL
+);
+
 CREATE TABLE IF NOT EXISTS citas (
- id BIGINT PRIMARY KEY AUTO_INCREMENT,
- paciente_id BIGINT NOT NULL,
- medico_id BIGINT NOT NULL,
- inicio DATETIME NOT NULL,
- estado ENUM('CONFIRMADA','CANCELADA') NOT NULL DEFAULT 'CONFIRMADA',
- CONSTRAINT fk_paciente FOREIGN KEY (paciente_id) REFERENCES pacientes(id),
- CONSTRAINT fk_medico FOREIGN KEY (medico_id) REFERENCES medicos(id),
- UNIQUE KEY uq_medico_horario (medico_id, inicio)
-) ENGINE=InnoDB;
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  paciente_id INT NOT NULL,
+  medico_id INT NOT NULL,
+  fecha DATE NOT NULL,
+  hora TIME NOT NULL,
+  estado VARCHAR(20) DEFAULT 'confirmada',
+  FOREIGN KEY (paciente_id) REFERENCES pacientes(id),
+  FOREIGN KEY (medico_id) REFERENCES medicos(id),
+  UNIQUE KEY turno_unico (medico_id, fecha, hora)
+);
